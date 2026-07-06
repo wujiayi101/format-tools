@@ -11,37 +11,8 @@ concurrency:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
-  deploy-github-pages:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - run: npm ci
-
-      - name: Build for GitHub Pages
-        run: npm run build
-        env:
-          VITE_BASE_PATH: /fmtkit/
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-      - id: deployment
-        uses: actions/deploy-pages@v4
-
   deploy-cloudflare:
     runs-on: ubuntu-latest
     steps:
@@ -54,10 +25,7 @@ jobs:
 
       - run: npm ci
 
-      - name: Build for Cloudflare Pages
-        run: npm run build
-        env:
-          VITE_BASE_PATH: /
+      - run: npm run build
 
       - name: Ensure Cloudflare Pages project exists
         env:

@@ -2,9 +2,7 @@
 
 A lightweight web app for viewing and converting structured data — JSON, YAML, and CSV.
 
-**Live:**
-- Cloudflare Pages: https://fmtkit.pages.dev/
-- GitHub Pages: https://wujiayi101.github.io/fmtkit/
+**Live:** https://fmtkit.pages.dev/
 
 ## Features
 
@@ -31,9 +29,9 @@ npm run preview
 
 ## Deploy
 
-Pushes to `main` run CI (lint + build) and deploy to both Cloudflare Pages and GitHub Pages.
+Pushes to `main` run CI (lint + build) and deploy to Cloudflare Pages.
 
-Required GitHub **repository** secrets for Cloudflare (copy from another repo such as `hk-outdoor-index`):
+Required GitHub **repository** secrets:
 
 ```bash
 gh secret set CLOUDFLARE_API_TOKEN --repo wujiayi101/fmtkit
@@ -44,5 +42,3 @@ gh secret set CLOUDFLARE_ACCOUNT_ID --repo wujiayi101/fmtkit
 |--------|-------------|
 | `CLOUDFLARE_API_TOKEN` | [API token](https://dash.cloudflare.com/profile/api-tokens) with **Cloudflare Pages Edit** |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
-
-GitHub Pages uses the built-in `GITHUB_TOKEN` via the `github-pages` environment.
